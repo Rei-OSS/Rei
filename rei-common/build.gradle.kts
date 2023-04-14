@@ -5,7 +5,7 @@ plugins {
 dependencies {
     compileOnly("org.jetbrains:annotations:24.0.1")
 
-    implementation("org.hibernate.orm:hibernate-core:6.2.0.Final")
+    implementation("org.hibernate.orm:hibernate-core:6.2.1.Final")
     implementation("org.hibernate.orm:hibernate-hikaricp:6.2.0.Final")
     implementation("org.hibernate.orm:hibernate-jcache:6.2.1.Final")
     implementation("com.google.inject:guice:5.1.0")
