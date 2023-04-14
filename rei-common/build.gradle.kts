@@ -7,7 +7,7 @@ dependencies {
 
     implementation("org.hibernate.orm:hibernate-core:6.2.0.Final")
     implementation("org.hibernate.orm:hibernate-hikaricp:6.2.0.Final")
-    implementation("org.hibernate.orm:hibernate-jcache:6.2.0.Final")
+    implementation("org.hibernate.orm:hibernate-jcache:6.2.1.Final")
     implementation("com.google.inject:guice:5.1.0")
     implementation("io.github.blackbaroness:fastutil-extender-guice:1.2.0")
     implementation("com.fasterxml.uuid:java-uuid-generator:4.1.0")
