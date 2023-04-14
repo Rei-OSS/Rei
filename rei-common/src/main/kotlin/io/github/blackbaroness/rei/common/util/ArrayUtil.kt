@@ -6,7 +6,6 @@ class ArrayUtil {
 
     companion object {
 
-        @JvmStatic
         fun <T> merge(vararg arrays: Array<T>): Array<T> {
             Preconditions.checkArgument(arrays.isNotEmpty(), "You must provide at least 1 array")
             if (arrays.size == 1) return arrays[0]
@@ -17,7 +16,6 @@ class ArrayUtil {
             return first
         }
 
-        @JvmStatic
         fun merge(vararg arrays: CharArray): CharArray {
             Preconditions.checkArgument(arrays.isNotEmpty(), "You must provide at least 1 array")
             if (arrays.size == 1) return arrays[0]

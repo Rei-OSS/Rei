@@ -7,7 +7,6 @@ import io.github.blackbaroness.rei.common.timer.TaskScheduler
 import io.github.blackbaroness.rei.common.timer.builder.NormalTaskBuilder
 import io.github.blackbaroness.rei.common.timer.builder.RepeatableTaskBuilder
 import org.checkerframework.common.returnsreceiver.qual.This
-import org.jetbrains.annotations.Unmodifiable
 import java.lang.reflect.Field
 import java.time.Duration
 import java.util.*
@@ -31,13 +30,13 @@ class AsyncTaskScheduler : TaskScheduler {
         return AsyncRepeatableTaskBuilder()
     }
 
-    override fun activeNormalTasks(): @Unmodifiable Collection<ScheduledTask> {
+    override fun activeNormalTasks(): Collection<ScheduledTask> {
         synchronized(activeNormalTasks) {
             return getActiveTasks(activeNormalTasks)
         }
     }
 
-    override fun activeRepeatableTasks(): @Unmodifiable Collection<ScheduledTask> {
+    override fun activeRepeatableTasks(): Collection<ScheduledTask> {
         synchronized(activeRepeatableTasks) {
             return getActiveTasks(activeRepeatableTasks)
         }
@@ -62,7 +61,7 @@ class AsyncTaskScheduler : TaskScheduler {
         return tasksCancelled.toLong()
     }
 
-    private fun getActiveTasks(tasks: MutableCollection<ScheduledTask>): @Unmodifiable Collection<ScheduledTask> {
+    private fun getActiveTasks(tasks: MutableCollection<ScheduledTask>): Collection<ScheduledTask> {
         removeInactiveTasks(tasks)
         return FastSet.objects.builder<ScheduledTask>().content(tasks).unmodifiable().build()
     }
