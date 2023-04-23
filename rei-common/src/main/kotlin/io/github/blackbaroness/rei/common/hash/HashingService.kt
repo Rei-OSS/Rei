@@ -29,6 +29,7 @@ class HashingService @Inject constructor(
     }
 
     fun isValid(hash: String, suspected: String): Boolean {
+        // todo cache #verifyer call?
         return BCrypt.verifyer().verify(
             hash.toByteArray(StandardCharsets.UTF_8),
             suspected.toByteArray(StandardCharsets.UTF_8)
@@ -51,15 +52,35 @@ class HashingService @Inject constructor(
     private fun runBenchmark() {
         asyncTaskScheduler.newTask().schedule {
             val rounds = findOptimalBcryptRounds()
-            logger.info("Bcrypt cost adjusted to $rounds")
-            if (rounds < 12) {
-                logger.warn(
-                    "This is a pretty bad result. " +
-                        "If you want to increase security, you need to increase server performance."
-                )
+            hasher = BCryptHasher(rounds)
+
+            val resultElevation = when {
+                rounds > 12 -> """
+                        <green>This is good result because it is higher than 12.
+                        <green>Don't worry about it - Rei will do the job.
+                    """.trimIndent()
+
+                else -> """
+                        <red>This is pretty bad result because it is lower than 12.
+                        <yellow>This does`t means your server will be hacked but, if your database will
+                        <yellow>be leaked, a hacker will be more likely to get one of the passwords using brute force.
+
+                        <red> Solutions:
+                        <yellow> 1. Increase your server performance. Most likely this will require CPU upgrade.
+                        <yellow> 2. Set fixed bcrypt rounds inside config. This will make players wait longer to register
+                        <yellow>    (there will be silence after entering the command), but the load on the server should not increase.
+                    """.trimIndent()
             }
 
-            //TODO IMPLEMENT ME
+            logger.info(
+                """
+                Automatic BCrypt cost adjustment done with result $rounds
+                This means now all new password will be stored with optimal security,
+                depending on your server performance.
+
+                $resultElevation
+            """.trimIndent()
+            )
         }
     }
 
