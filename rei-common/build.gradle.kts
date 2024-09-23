@@ -13,5 +13,5 @@ dependencies {
     implementation("com.fasterxml.uuid:java-uuid-generator:4.1.0")
     implementation("space.arim.dazzleconf:dazzleconf-ext-snakeyaml:1.3.0-M1")
     implementation("at.favre.lib:bcrypt:0.10.2")
-    implementation("com.google.guava:guava:31.1-jre")
+    implementation("com.google.guava:guava:33.3.1-jre")
 }
