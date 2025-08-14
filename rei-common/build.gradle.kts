@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    compileOnly("org.jetbrains:annotations:24.0.1")
+    compileOnly("org.jetbrains:annotations:24.1.0")
 
     implementation("org.hibernate.orm:hibernate-core:6.2.1.Final")
     implementation("org.hibernate.orm:hibernate-hikaricp:6.2.1.Final")
