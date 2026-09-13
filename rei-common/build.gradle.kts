@@ -5,9 +5,9 @@ plugins {
 dependencies {
     compileOnly("org.jetbrains:annotations:24.0.1")
 
-    implementation("org.hibernate.orm:hibernate-core:6.2.1.Final")
-    implementation("org.hibernate.orm:hibernate-hikaricp:6.2.1.Final")
-    implementation("org.hibernate.orm:hibernate-jcache:6.2.1.Final")
+    implementation("org.hibernate.orm:hibernate-core:6.6.57.Final")
+    implementation("org.hibernate.orm:hibernate-hikaricp:6.6.57.Final")
+    implementation("org.hibernate.orm:hibernate-jcache:6.6.57.Final")
     implementation("com.google.inject:guice:5.1.0")
     implementation("io.github.blackbaroness:fastutil-extender-guice:1.2.0")
     implementation("com.fasterxml.uuid:java-uuid-generator:4.1.0")
